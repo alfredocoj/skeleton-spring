@@ -107,7 +107,6 @@ public class Usuario extends EntityBase  implements UserDetails {
         return true;
     }
 
-    @Override
     public String getName() {
         return nome;
     }
