@@ -7,6 +7,13 @@
     <groupId>skeleton</groupId>
     <artifactId>br.uema.skeleton</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
     <build>
         <plugins>
             <plugin>
@@ -17,124 +24,318 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <!-- <version>2.6</version> -->
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
-        <!-- SPRING-MVC -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.0.0.BUILD-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>1.5.6.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        <!-- Spring -->
+
+        <!--Thymeleaf-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.0.0.BUILD-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>5.0.0.BUILD-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>5.0.0.BUILD-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>2.0.0.BUILD-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>5.0.0.BUILD-SNAPSHOT</version>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.0.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-spring4</artifactId>
-            <version>2.1.5.RELEASE</version>
+            <version>3.0.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-java8time</artifactId>
+            <version>3.0.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
-            <version>1.4.0</version>
+            <version>2.2.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity4</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <version>3.0.0.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>1.5.6.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>5.0.0.BUILD-SNAPSHOT</version>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.0.3.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>5.0.0.BUILD-SNAPSHOT</version>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>3.0.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <version>3.0.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.5.6.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.0.12.Final</version>
+            <version>5.0.11.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1212</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.22</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>1.5.6.RELEASE</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
             <version>1.0.0.Final</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.0.11.Final</version>
         </dependency>
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.3.10.RELEASE</version>
+        </dependency>
+        <!--https://mvnrepository.com/artifact/org.springframework/spring-orm-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>4.3.10.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-cypher-compiler-2.1</artifactId>
+            <version>2.1.8</version>
+        </dependency>
+        <!--Jackson JSON Mapper-->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
+        </dependency>
+
+        <!--Spring security-->
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>4.2.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>4.2.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>4.2.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>4.2.3.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <!--Spring Boot Start Test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>1.5.6.RELEASE</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.mysema.querydsl/querydsl-jpa -->
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>3.7.4</version>
+        </dependency>
+
+        <!--Token-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>1.5.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.12.1.1</version>
+        </dependency>
+        <!--aspectjrt-->
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.5.4</version>
+        </dependency>
+
+        <!--Dependências do Jasper Reports-->
+        <!--https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports-->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.3.0</version>
+        </dependency>
+
+        <!--https://mvnrepository.com/artifact/com.lowagie/itext-->
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+
+
+        <!--https://mvnrepository.com/artifact/org.jfree/jfreechart-->
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.19</version>
+        </dependency>
+
+
+        <!--https://mvnrepository.com/artifact/org.jfree/jcommon-->
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jcommon</artifactId>
+            <version>1.0.24</version>
+        </dependency>
+
+
+        <!--https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils-->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+        <!--https://mvnrepository.com/artifact/commons-collections/commons-collections-->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+        <!--https://mvnrepository.com/artifact/commons-digester/commons-digester-->
+        <dependency>
+            <groupId>commons-digester</groupId>
+            <artifactId>commons-digester</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <!--https://mvnrepository.com/artifact/commons-logging/commons-logging-->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
             <version>1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.0.0.BUILD-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.0.0.BUILD-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>1.5.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.0.0.BUILD-SNAPSHOT</version>
+            <version>4.3.10.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <version>1.5.6.RELEASE</version>
-            <!--<scope>provided</scope>-->
+            <groupId>br.uema.thirdparty.spring</groupId>
+            <artifactId>spring-core-5.0.0.BUILD-SNAPSHOT</artifactId>
+            <version>1.0.1</version>
         </dependency>
 
-
     </dependencies>
-
 
 </project>
