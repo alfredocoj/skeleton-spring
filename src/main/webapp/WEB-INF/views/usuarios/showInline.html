@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_usuario})}|">Show Usuario - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${usuario}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="usuario-login-field" data-z="a0928e1b">
+            	      <strong data-th-text="#{label_usuario_login}">login</strong>
+                    <span data-th-text="*{{login}}">loginValue</span>
+         	        </li>
+                  <li id="usuario-nome-field" data-z="e7aec6e3">
+            	      <strong data-th-text="#{label_usuario_nome}">nome</strong>
+                    <span data-th-text="*{{nome}}">nomeValue</span>
+         	        </li>
+                  <li id="usuario-email-field" data-z="1e77d3bb">
+            	      <strong data-th-text="#{label_usuario_email}">email</strong>
+                    <span data-th-text="*{{email}}">emailValue</span>
+         	        </li>
+                  <li id="usuario-ativo-field" data-z="50da995b">
+            	      <strong data-th-text="#{label_usuario_ativo}">ativo</strong>
+                    <span data-th-text="*{{ativo}}">ativoValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>
